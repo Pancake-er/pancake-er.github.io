@@ -12,6 +12,10 @@
             margin: 0;
         }
 
+        h2 {
+            line-height: 1.5;
+        }
+
         .header {
             padding: 20px;
             text-align: center;
@@ -28,7 +32,6 @@
 
         figcaption {
             padding: 20px;
-            width: 50%;
             line-height: 1.5;
             color: rgb(192, 192, 192);
         }
@@ -50,20 +53,80 @@
             stabalize themselves using Thrust Vector Control (TVC).</p>
         <p>Thrust Vectoring is when a vehicle (like a rocket or plane) manipulates the direction of its thrust to change
             its direction and angular velocity. </p>
-        <img src="images/rocketry/tvc/intoductiontvcdiagram.png" alt="tvc diagram">
+        <img src="images/rocketry/tvc/intoductiontvcdiagram.png" alt="TVC Diagram" width="50%">
         <figcaption>A diagram of how TVC works.</figcaption>
-        <img src="images/rocketry/tvc/introductiontvcplanes.jpg" alt="tvc planes">
+        <img src="images/rocketry/tvc/introductiontvcplanes.jpg" alt="TVC Planes" width="50%">
         <figcaption>Planes which use thrust vectoring on their engines.</figcaption>
-        <p>
-            The channel inspired me to build my own TVC rocket. I always liked space-related things, like rocketry, as
-            well as engineering and software development.
-            Building a rocket like this would include aspects of all of these, from PCB and engine mount design to
-            writing stabalization software, so it seemed like
-            the perfect project. This page is a documentation of my progress on this project, and will be updated
-            periodically.
+        <p>The channel inspired me to build my own TVC rocket. This page is a documentation of my progress, as well as why
+            and how I do things on this project. I will update it periodically.
         </p>
-        <h1>Engine Mount Design</h1>
 
+        
+        <h1>Engine Mount Design</h1>
+        <h2>(February 4th, 2023)</h2>
+
+        <p>As of now, I nearly have a fully finished (prototype) version of an engine mount. 
+            The servos are not yet connected, and part of the arm is broken. I hope to finish and test it soon.
+        </p>
+        <img src="images/rocketry/tvc/mount_assembled.jpg" alt="Mount Prototype" width="50%">
+        <p>Every 3D printed part of this rocket has so far been designed in Tinkercad. 
+            Though maybe not the most professional option, it does everything I need it to do efficiently, conviently, and for free.
+            All the parts are printed on my Creality Ender 3 Pro:
+        </p>
+        <img src="images/rocketry/tvc/ender3.jpg" alt="Creality Ender 3 Pro" width="50%">
+        <p>The first verion of the main ring looked like this:</p>
+        <img src="images/rocketry/tvc/mount_first.png" alt="Very First Mount Model" width="50%">
+        <p>At the time, I had not used much CAD, so it was very rough.
+            After printing it I quickly realised I couldn't even screw in the servo screws.
+            After few variations of just the ring, I "got distracted" by other projects.
+            But through those, like from this fully automatic rubber band gun with removable magazines:
+        </p>
+        <img src="images/rocketry/tvc/rubber_band_gun.png" alt="Rubber Band Gun Model" width="50%">
+        <p>I gained a lot of design experience. After finding a datasheet with the servo dimensions,
+            I was able to design this version fairly quick and without much trouble, despite the unsual round space constraints of the rocket body:
+        </p>
+        <img src="images/rocketry/tvc/finished_mount_design.png" alt="Finished Mount Design" width="50%">
+        <figcaption>The green arm is acutally not its first iteration. It used to be mounted on only one side, which would bend under pressure.</figcaption>
+        <img src="images/rocketry/tvc/bodytube.jpg" alt="Body Tube" width="50%">
+        <figcaption>A lightweight 77mm paper tube that will be the body of the rocket.
+            Because it's round, it is critical to consider how everything will move once inside. 
+            For example, the mount can rotate a lot outside of it, but only a few degrees inside. I had to design around this.
+        </figcaption>
+        <p>The small darker brown ring in the center will hold the 29mm motor (the tan cylinder). 
+            The servo on the arm will be connected with a rod to this. The motor can either be glued into the ring,
+            friction fitted by increasing its radius with electrical tape, compressed by further tightening the screws holding the ring,
+            or a combination of these methods. The ring is small so it can simply be thrown away (if the motor is glued in) and reprinted quickly.
+        </p>
+        <p>The plastic parts will be connected to the servos using stiff bent metal wire I have laying around.</p>
+        <img src="images/rocketry/tvc/servo.png" alt="Rubber Band Gun Model" width="50%">
+        <figcaption>One of the cheap SG92R micro-servos that will move the gimbal. 
+            I have read of people having issues with the accuracy of these, so I may need to use higher quality ones in the future.
+        </figcaption>
+        <p>Unfortunatley, my printer was not cooperating, and it would take many attempts to print everything. 
+            Eventally (after much trouble shooting, changing the bowden tube, and fixing other under extrusion issues) 
+            I had everything printed, except for the green arm. Not only would this part fail multiple times half way through,
+            but I kept breaking it while taking off supports. 
+        </p>
+        <img src="images/rocketry/tvc/mount_broken1.jpg" alt="Broken Mount" width="50%">
+        <figcaption>One of the mounts I broke taking the supports off.</figcaption>
+        <img src="images/rocketry/tvc/mount_broken3.jpg" alt="Many Broken Mounts" width="50%">
+        <figcaption>Just some of the failed arms.</figcaption>
+        <p>
+            After some trial and error, I eventually got an intact one,
+            but ignorantly overtightend one of the screws, and tore through the plastic.
+        </p>
+        <img src="images/rocketry/tvc/mount_broken4.jpg" alt="Overtightend Arm" width="50%">
+        <figcaption>The one I overtightend the screw in.</figcaption>
+        <img src="images/rocketry/tvc/connection_mechanism.jpg" alt="Part Connection Mechanism" width="50%"> 
+        <figcaption>Part connection mechanism. A nut is inserted into a slot (that is not the full depth of the part)
+            and then you essentially acheive a threaded hole which is much stronger and more precise (higher resolution) than could be 3D printed. 
+            You can then screw in a screw. Not my idea, I found it on some forum a while back.
+        </figcaption>
+        <p>
+            This is where I'm at with the mount at the moment (the overtightend arm is actually the one used in the pictures of it assembled,
+            beucase it still works, just not ideally). The next step would be to reprint the arm, put the two rings and the arm together,
+            and test its motion with a lit engine and my flight computer at the helm.
+        </p>
     </div>
 
 </body>
