@@ -14,17 +14,24 @@ body {
     background-position: center;
     background-size:cover;
 }
-
 .content {
     padding: 20px;
     line-height: 2;
-    width: 50%;
+    width: 50em;
+}
+
+@media screen and (max-width: 50em) {
+    .content {
+        padding: 20px;
+        line-height: 2;
+        width: 100%;
+    }
 }
 
 
 .content img {
-    width: 30%;
-    height: 30%
+    width: 40%;
+    height: 40%
 }
 
 .content figcaption {
