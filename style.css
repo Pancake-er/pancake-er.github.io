@@ -10,17 +10,22 @@ body {
     text-align: center;
     background-image: url(images/snow.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment:fixed;
     background-position: center;
-    background-size:cover;
+    background-size: cover;
 }
 .content {
     padding: 20px;
     line-height: 2;
     width: 50em;
+    margin: auto;
+}
+.big {
+    width: 150%;
+    height: 150%;
 }
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 53em) {
     .content {
         padding: 20px;
         line-height: 2;
@@ -30,12 +35,12 @@ body {
 
 
 .content img {
-    width: 40%;
-    height: 40%
+    width: 30%;
+    height: 30%;
 }
 
 .content figcaption {
-    padding: 10px;
+    line-height: 2;
     font-size: 15px;
     color: rgb(172, 172, 172);
 }
